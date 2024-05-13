@@ -1,0 +1,13 @@
+def minimum_weight(weights, index, pile1_sum, pile2_sum):
+    if index == len(weights):
+        return abs(pile1_sum - pile2_sum)
+
+    difference_1 = minimum_weight(weights, index + 1, pile1_sum + weights[index], pile2_sum)
+    difference_2 = minimum_weight(weights, index + 1, pile1_sum, pile2_sum + weights[index])
+
+    return min(difference_1, difference_2)
+
+# put own weights and test
+weights = [10, 20, 30, 40, 50]
+result = minimum_weight(weights, 0, 0, 0)
+print("The minimum possible difference between the weights of two piles (recursion) is:", result)
