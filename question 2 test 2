@@ -1,0 +1,23 @@
+def number_of_diplomas(w, h, length_of_side):
+    return (length_of_side // w) * (length_of_side // h)
+
+def binary_search(w, h, n):
+    left = 1
+    right = max(w, h) * n
+
+    while left < right:
+        mid = (left + right) // 2
+        if number_of_diplomas(w, h, mid) >= n:
+            right = mid
+        else:
+            left = mid + 1
+
+    return left
+
+
+# put your own width, height and number of diplomas (n)
+w = 3
+h = 4
+n = 10
+
+print(binary_search(w, h, n))
